@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "808584292357",
+    "project_id": "devtask-manager",
+    "storage_bucket": "devtask-manager.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:808584292357:android:977d80a5463ebe5fc9d46c",
+        "android_client_info": {
+          "package_name": "devroom.devTask"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmvmdG246eF8kFwfOjFXH39xv_qAkGPV8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
