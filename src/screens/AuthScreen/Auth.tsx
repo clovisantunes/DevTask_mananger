@@ -1,40 +1,67 @@
-import React, { useState } from 'react';
-import { TextInput, Button, Text, View } from 'react-native';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import React, {useState} from 'react';
+import {Dimensions, TouchableOpacity} from 'react-native';
+import {
+  FullScreenContainer,
+  CenteredContainer,
+  TextError,
+} from '../../styles/global_styles';
+import {
+  LoginInput,
+  LoginCard,
+  LoginButton,
+  ButtonText,
+  LoginText,
+  LoginImage,
+  PassText,
+} from './styles';
+import {useAuthContext} from '../../hooks/useAuthContext';
 
-const Login = ({ navigation }: any) => { // Desestruturando navigation de props
+const Login = ({navigation}: any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState(''); // Estado para mensagem de erro
+  const {login, errorMessage} = useAuthContext();
+
+  const screenWidth = Dimensions.get('window').width;
+  const threeFourthsWidth = (screenWidth * 3) / 4;
 
   const handleLogin = async () => {
-    try {
-      const authInstance = getAuth();
-      await signInWithEmailAndPassword(authInstance, email, password);
-      navigation.navigate('Home'); 
-    } catch (error: any) {
-      console.error('Erro ao logar:', error.message);
-      setErrorMessage('Usuário ou senha incorretos');
+    const isSuccess = await login(email, password);
+    if (isSuccess) {
+      navigation.navigate('Home');
     }
+  };
+  const handlePasswordRecovery = () => {
+    navigation.navigate('PasswordRecovery');
   };
 
   return (
-    <View>
-      <TextInput
-        placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
-      />
-      <TextInput
-        placeholder="Senha"
-        secureTextEntry
-        value={password}
-        onChangeText={setPassword}
-      />
-      <Button title="Login" onPress={handleLogin} />
-      
-      {errorMessage ? <Text style={{ color: 'red' }}>{errorMessage}</Text> : null}
-    </View>
+    <FullScreenContainer>
+      <CenteredContainer>
+        <LoginImage
+          source={require('../../assets/loginImage.png')}
+          style={{width: '100%', height: 200, resizeMode: 'contain'}}
+        />
+      </CenteredContainer>
+      <CenteredContainer width={`${threeFourthsWidth}px`}>
+        <LoginText>Login</LoginText>
+        <LoginInput placeholder="Email" value={email} onChangeText={setEmail} />
+        <LoginInput
+          placeholder="Password"
+          secureTextEntry
+          value={password}
+          onChangeText={setPassword}
+        />
+        <TouchableOpacity onPress={handlePasswordRecovery}>
+          <PassText>Esqueceu sua senha?</PassText>
+        </TouchableOpacity>
+        <LoginCard>
+          <LoginButton onPress={handleLogin}>
+            <ButtonText>Login</ButtonText>
+          </LoginButton>
+        </LoginCard>
+        {errorMessage ? <TextError>{errorMessage}</TextError> : null}
+      </CenteredContainer>
+    </FullScreenContainer>
   );
 };
 
