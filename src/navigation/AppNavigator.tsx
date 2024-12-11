@@ -1,7 +1,8 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import Auth from '../screens/AuthScreen/Auth';
-import Home from '../screens/Home/Home';
-import PassRecovery from '../screens/PassRecovery/PassRecovery';
+import Auth from '../screens/AuthScreen';
+import Home from '../screens/Home';
+import PassRecovery from '../screens/PassRecovery';
+import AccountCreation from '../screens/AccountCreation';
 
 
 const Stack = createStackNavigator();
@@ -24,6 +25,11 @@ const useNavigation = () => {
           name="PasswordRecovery"
           component={PassRecovery}
           options={{ title: 'Recuperar sua senha' }}
+        />
+        <Stack.Screen
+          name="AccountCreation"
+          component={AccountCreation}
+          options={{ title: 'Criar sua conta' }}
         />
       </Stack.Navigator>
     )
