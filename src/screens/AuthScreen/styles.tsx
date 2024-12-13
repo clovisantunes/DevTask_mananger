@@ -14,14 +14,14 @@ export const LoginText = styled(Text)`
     font-size: 36px;
     margin-bottom: 20px;
     font-weight: 800;
-    color: #626594;
+    color: #6363f5;
 `
 export const LoginImage = styled.Image`
     max-width: 100%;
     min-height: 100%;
 `
 export const PassText = styled.Text`
-     color: #0261f0;
+     color: #0066ff;
     font-size: 14px;
     font-weight: bold;
     margin-top: 8px;
@@ -34,4 +34,15 @@ export const TouchCard = styled.View`
     flex-direction: row;
     width: ${screenWidth * 0.7}px;
     justify-content: space-between;
+`
+export const CenteredImage = styled.View`
+ flex: 1;
+  justify-content: center;
+  align-items: center;
+  width:  100%;
+  align-self: center;
+  padding: 0px;
+  background: #ffff;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
 `

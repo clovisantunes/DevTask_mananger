@@ -2,21 +2,12 @@ import React, { useState } from 'react';
 import { Dimensions, TouchableOpacity } from 'react-native';
 import { ThemeProvider } from 'styled-components/native';
 import { theme } from '../../styles/theme';
-import {
-  FullScreenContainer,
-  CenteredContainer,
-  TextError,
-} from '../../styles/global_styles';
-import {
-  LoginCard,
-  LoginText,
-  LoginImage,
-  PassText,
-  TouchCard,
-} from './styles';
+import { FullScreenContainer, CenteredContainer, TextError } from '../../styles/global_styles';
+import { LoginCard, LoginText, LoginImage, PassText, TouchCard, CenteredImage } from './styles';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import CustomInput from '../../components/Input/CustomInput';
 import CustomButton from '../../components/Button/CustomButton';
+import texts from '../../utils/texts.json';
 
 type LoginProps = {
   navigation: {
@@ -45,35 +36,35 @@ const Login: React.FC<LoginProps> = ({ navigation }) => {
   return (
     <ThemeProvider theme={theme}>
       <FullScreenContainer>
-        <CenteredContainer>
+        <CenteredImage>
           <LoginImage
             source={require('../../assets/loginImage.png')}
             style={{ resizeMode: 'contain' }}
           />
-        </CenteredContainer>
-        <CenteredContainer width={`${(Dimensions.get('window').width * 3) / 4}px`}>
-          <LoginText>Login</LoginText>
+        </CenteredImage>
+        <CenteredContainer width={`${(Dimensions.get('window').width * 3) / 4}px`} >
+          <LoginText>{texts.login.title}</LoginText>
           <CustomInput
-            placeholder="Email"
+            placeholder={texts.login.emailPlaceholder}
             value={email}
             onChangeText={setEmail}
           />
           <CustomInput
-            placeholder="Password"
+            placeholder={texts.login.passwordPlaceholder}
             secureTextEntry
             value={password}
             onChangeText={setPassword}
           />
           <TouchCard>
             <TouchableOpacity onPress={handlePasswordRecovery}>
-              <PassText>Esqueceu sua senha?</PassText>
+              <PassText>{texts.login.forgotPassword}</PassText>
             </TouchableOpacity>
             <TouchableOpacity onPress={handleCreateAccount}>
-              <PassText>Criar sua conta</PassText>
+              <PassText>{texts.login.createAccount}</PassText>
             </TouchableOpacity>
           </TouchCard>
           <LoginCard>
-            <CustomButton onPress={handleLogin}>Login</CustomButton>
+            <CustomButton onPress={handleLogin}>{texts.login.loginButton}</CustomButton>
           </LoginCard>
           {errorMessage ? <TextError>{errorMessage}</TextError> : null}
         </CenteredContainer>

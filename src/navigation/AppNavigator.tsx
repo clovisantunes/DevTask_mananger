@@ -29,7 +29,18 @@ const useNavigation = () => {
         <Stack.Screen
           name="AccountCreation"
           component={AccountCreation}
-          options={{ title: 'Criar sua conta' }}
+          options={{
+            title: '',
+            headerBackTitle: '',
+            headerStyle: {
+              backgroundColor: '#7c73e3', 
+              elevation: 0, 
+              shadowOpacity: 0, 
+              borderBottomWidth: 0,
+           
+            },
+            headerTintColor: 'white', 
+          }}
         />
       </Stack.Navigator>
     )

@@ -1,5 +1,8 @@
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+interface FullscreenContainerProps {
+  backgroundColor?: string;
+}
 
 interface CenteredContainerProps {
   width?: string;
@@ -7,12 +10,13 @@ interface CenteredContainerProps {
   border?: string;
   borderRadius?: string;
   padding?: string;
+  top?: string
 }
-export const FullScreenContainer = styled.View`
+export const FullScreenContainer = styled.View<FullscreenContainerProps>`
   flex: 1;
   justify-content: center;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.background};
+  background-color: ${({ theme, backgroundColor }) => theme.colors.background ? theme.colors.background : backgroundColor};
 `;
 
 export const SafeAreaContainer = styled(SafeAreaView)`
@@ -22,6 +26,14 @@ export const SafeAreaContainer = styled(SafeAreaView)`
   background-color: ${({ theme }) => theme.colors.background};
 `;
 
+interface BackgroundContainerProps{
+  backgroundColor?: string;
+}
+
+export const BackgroundContainer = styled.View<BackgroundContainerProps>`
+  width: 100%;
+  background-color: ${({ backgroundColor }) => backgroundColor};
+`
 export const CenteredContainer = styled.View<CenteredContainerProps>`
   flex: 1;
   justify-content: center;
@@ -32,6 +44,22 @@ export const CenteredContainer = styled.View<CenteredContainerProps>`
   border: ${({ border }) => border || 'none'};
   border-radius: ${({ borderRadius }) => borderRadius || '0px'};
   padding: ${({ padding }) => padding || '0px'};
+ 
+  
+`;
+export const CenterdAbsoluteContainer = styled.View<CenteredContainerProps>`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  width: ${({ width }) => width || '90%'};
+  height: 360px;
+  align-self: center;
+  background-color: ${({ backgroundColor, theme }) => backgroundColor || theme.colors.background};
+  border: ${({ border }) => border || 'none'};
+  border-radius: ${({ borderRadius }) => borderRadius || '0px'};
+  padding: ${({ padding }) => padding || '0px'};
+  position: absolute;
+  top: ${({ top }) => top || '0px'};
 `;
 
 export const TextError = styled.Text`

@@ -1,0 +1,16 @@
+{
+    "login": {
+      "title": "Sign In",
+      "namePlaceholder": "Full name",
+      "emailPlaceholder": "Email",
+      "passwordPlaceholder": "Password",
+      "forgotPassword": "Forgot Password?",
+      "createAccount": "Sign Up",
+      "loginButton": "Sign In"
+    },
+    "AccountCreation": {
+      "creationMessage": "Sign Up",
+      "creationSubText": "Create your account and start organizing your tasks!"
+    }
+  }
+  
