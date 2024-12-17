@@ -52,7 +52,7 @@ export const CenterdAbsoluteContainer = styled.View<CenteredContainerProps>`
   justify-content: center;
   align-items: center;
   width: ${({ width }) => width || '90%'};
-  height: 360px;
+  height: auto;
   align-self: center;
   background-color: ${({ backgroundColor, theme }) => backgroundColor || theme.colors.background};
   border: ${({ border }) => border || 'none'};

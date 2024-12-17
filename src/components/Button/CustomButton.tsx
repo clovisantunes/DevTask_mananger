@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { ButtonText, LoginButton } from './style';
+import { ButtonText, GenericButton } from './style';
 
 interface CustomButtonProps {
   onPress: () => void;
@@ -7,9 +7,9 @@ interface CustomButtonProps {
 }
 
 const CustomButton = ({ onPress, children }: CustomButtonProps) => (
-    <LoginButton onPress={onPress}>
+    <GenericButton onPress={onPress}>
       <ButtonText>{children}</ButtonText>
-    </LoginButton>
+    </GenericButton>
   );
 
-  export default CustomButton;
+export default CustomButton;

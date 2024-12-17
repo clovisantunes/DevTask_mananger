@@ -4,10 +4,11 @@ import { ThemeProvider } from 'styled-components/native';
 import { theme } from '../../styles/theme';
 import { FullScreenContainer, CenteredContainer, TextError } from '../../styles/global_styles';
 import { LoginCard, LoginText, LoginImage, PassText, TouchCard, CenteredImage } from './styles';
-import { useAuthContext } from '../../hooks/useAuthContext';
+import { useAuthContext } from '../../contexts/useAuthContext';
 import CustomInput from '../../components/Input/CustomInput';
 import CustomButton from '../../components/Button/CustomButton';
 import texts from '../../utils/texts.json';
+import { useCheckAuth } from '../../hooks/useCheckAuth';
 
 type LoginProps = {
   navigation: {
@@ -20,12 +21,15 @@ const Login: React.FC<LoginProps> = ({ navigation }) => {
   const [password, setPassword] = useState('');
   const { login, errorMessage } = useAuthContext();
 
+  useCheckAuth({ navigation });
+
   const handleLogin = async () => {
     const isSuccess = await login(email, password);
     if (isSuccess) {
       navigation.navigate('Home');
     }
   };
+
   const handlePasswordRecovery = () => {
     navigation.navigate('PasswordRecovery');
   };
@@ -42,7 +46,7 @@ const Login: React.FC<LoginProps> = ({ navigation }) => {
             style={{ resizeMode: 'contain' }}
           />
         </CenteredImage>
-        <CenteredContainer width={`${(Dimensions.get('window').width * 3) / 4}px`} >
+        <CenteredContainer width={`${(Dimensions.get('window').width * 3) / 4}px`}>
           <LoginText>{texts.login.title}</LoginText>
           <CustomInput
             placeholder={texts.login.emailPlaceholder}

@@ -1,7 +1,7 @@
 import { Text } from "react-native";
 import styled from "styled-components/native";
 
-export const LoginButton = styled.TouchableOpacity`
+export const GenericButton = styled.TouchableOpacity`
     width: 100%;
     height: 50px; 
     justify-content: center;
