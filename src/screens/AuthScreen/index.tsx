@@ -3,7 +3,7 @@ import { Dimensions, TouchableOpacity } from 'react-native';
 import { ThemeProvider } from 'styled-components/native';
 import { theme } from '../../styles/theme';
 import { FullScreenContainer, CenteredContainer, TextError } from '../../styles/global_styles';
-import { LoginCard, LoginText, LoginImage, PassText, TouchCard, CenteredImage } from './styles';
+import { LoginCard, LoginText, GenericImage, PassText, TouchCard, CenteredImage } from './styles';
 import { useAuthContext } from '../../contexts/useAuthContext';
 import CustomInput from '../../components/Input/CustomInput';
 import CustomButton from '../../components/Button/CustomButton';
@@ -41,7 +41,7 @@ const Login: React.FC<LoginProps> = ({ navigation }) => {
     <ThemeProvider theme={theme}>
       <FullScreenContainer>
         <CenteredImage>
-          <LoginImage
+          <GenericImage
             source={require('../../assets/loginImage.png')}
             style={{ resizeMode: 'contain' }}
           />

@@ -1,4 +1,4 @@
-import 'dotenv/config'; // Carrega o .env
+import 'dotenv/config'; 
 
 export default {
   expo: {

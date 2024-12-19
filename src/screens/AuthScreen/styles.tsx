@@ -16,10 +16,12 @@ export const LoginText = styled(Text)`
     font-weight: 800;
     color: #6363f5;
 `
-export const LoginImage = styled.Image`
+export const GenericImage = styled.Image`
     max-width: 100%;
     min-height: 100%;
 `
+
+
 export const PassText = styled.Text`
      color: #0066ff;
     font-size: 14px;

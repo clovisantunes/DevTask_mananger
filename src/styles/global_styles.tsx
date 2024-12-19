@@ -112,3 +112,9 @@ export const TouchCard = styled.View`
   width: ${screenWidth * 0.7}px;
   justify-content: space-between;
 `;
+
+export const LogoImage = styled.Image`
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
+`
